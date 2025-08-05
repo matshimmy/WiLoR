@@ -1,0 +1,5 @@
+__pycache__/
+demo_out/
+pretrained_models/detector.pt
+pretrained_models/wilor_final.ckpt
+mano_data/MANO_RIGHT.pkl
