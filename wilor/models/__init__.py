@@ -5,7 +5,8 @@ from .discriminator import Discriminator
 
 def load_wilor(checkpoint_path, cfg_path):
     from pathlib import Path
-    from external.WiLoR.wilor.configs import get_config
+    from wilor.configs import get_config
+    # from external.WiLoR.wilor.configs import get_config
     print('Loading ', checkpoint_path)
     model_cfg = get_config(cfg_path, update_cachedir=True)
 
@@ -27,9 +28,12 @@ def load_wilor(checkpoint_path, cfg_path):
 
     if ('DATA_DIR' in model_cfg.MANO):
         model_cfg.defrost()
-        model_cfg.MANO.DATA_DIR    = './external/WiLoR/mano_data/'
-        model_cfg.MANO.MODEL_PATH  = './external/WiLoR/mano_data/'
-        model_cfg.MANO.MEAN_PARAMS = './external/WiLoR/mano_data/mano_mean_params.npz'
+        # model_cfg.MANO.DATA_DIR    = './external/WiLoR/mano_data/'
+        # model_cfg.MANO.MODEL_PATH  = './external/WiLoR/mano_data/'
+        # model_cfg.MANO.MEAN_PARAMS = './external/WiLoR/mano_data/mano_mean_params.npz'
+        model_cfg.MANO.DATA_DIR    = './mano_data/'
+        model_cfg.MANO.MODEL_PATH  = './mano_data/'
+        model_cfg.MANO.MEAN_PARAMS = './mano_data/mano_mean_params.npz'
         model_cfg.freeze()
 
     model = WiLoR.load_from_checkpoint(checkpoint_path, strict=False, cfg=model_cfg)
