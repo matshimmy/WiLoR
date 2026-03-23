@@ -1,31 +1,31 @@
 {
-  "joint_color": "#c58bbd",
-  "mesh_color": "#4046A8",
+  "joint_color": "#75AF55",
+  "mesh_color": "#FFFFFF",
 
   "svg": {
-    "bone_stroke_width": 6,
+    "bone_stroke_width": 5,
     "bone_cap_style": "projecting",
-    "joint_marker_size": 8,
+    "joint_marker_size": 20,
     "joint_outline": true,
     "joint_outline_color": "#000000",
-    "joint_outline_width": 0.6,
+    "joint_outline_width": 0.4,
     "opacity_min": 0.3,
-    "opacity_max": 1.0
+    "opacity_max": 1
   },
 
   "image_overlay": {
     "bone_thickness": 4,
-    "joint_radius": 5,
+    "joint_radius": 10,
     "joint_outline": true,
     "joint_outline_color": [0, 0, 0],
     "joint_outline_thickness": 1
   },
 
   "viewer_3d": {
-    "bone_line_width": 5,
+    "bone_line_width": 4,
     "joint_point_size": 60,
     "joint_outline": true,
     "joint_outline_color": "#000000",
-    "joint_outline_width": 0.6
+    "joint_outline_width": 0.4
   }
 }
