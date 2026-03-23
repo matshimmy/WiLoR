@@ -1,11 +1,9 @@
 ### Original Installation
 
 ```bash
-conda create --name wilor python=3.10
-conda activate wilor
+python3.10 -m venv .venv
+source .venv/bin/activate
 
-pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
-# Install requirements
 pip install -r requirements.txt
 ```
 Download the pretrained models using: 
