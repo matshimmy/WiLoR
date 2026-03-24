@@ -32,9 +32,9 @@ def load_joints(json_path):
     """Load joints and bones from a prediction JSON file."""
     with open(json_path) as f:
         data = json.load(f)
-    joints = np.array([[j['x'], j['y'], j['z']] for j in data['joints']])
+    joints = np.array([[j['x'], j['y'], j['z']] for j in data['joints_3d']])
     bones = [tuple(b) for b in data['bones']]
-    names = [j['name'] for j in data['joints']]
+    names = [j['name'] for j in data['joints_3d']]
     return joints, bones, names
 
 
