@@ -8,8 +8,8 @@ pip install -r requirements.txt
 ```
 Download the pretrained models using: 
 ```bash
-wget https://huggingface.co/spaces/rolpotamias/WiLoR/resolve/main/pretrained_models/detector.pt -P ./pretrained_models/
-wget https://huggingface.co/spaces/rolpotamias/WiLoR/resolve/main/pretrained_models/wilor_final.ckpt -P ./pretrained_models/
+curl -L --progress-bar https://huggingface.co/spaces/rolpotamias/WiLoR/resolve/main/pretrained_models/detector.pt -o ./pretrained_models/detector.pt
+curl -L --progress-bar https://huggingface.co/spaces/rolpotamias/WiLoR/resolve/main/pretrained_models/wilor_final.ckpt -o ./pretrained_models/wilor_final.ckpt
 ```
 It is also required to download MANO model from [MANO website](https://mano.is.tue.mpg.de). 
 Create an account by clicking Sign Up and download the models (mano_v*_*.zip). Unzip and place the right hand model `MANO_RIGHT.pkl` under the `mano_data/` folder. 
