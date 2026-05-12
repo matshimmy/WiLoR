@@ -4,6 +4,7 @@ Run WiLoR prediction on images. Saves raw data only (no drawing).
 Outputs per hand:
     *_joints.json  — 21 joints (3D model-space + 2D image-space) + bones
     *_mesh.npz     — MANO vertices, camera params, faces for mesh rendering
+                     (only written when --save_mesh is passed)
 
 Usage:
     python joint_prediction/predict.py
@@ -110,6 +111,8 @@ def main():
     parser.add_argument('--out_folder', type=str, default=default_out)
     parser.add_argument('--rescale_factor', type=float, default=2.0)
     parser.add_argument('--file_type', nargs='+', default=['*.jpg', '*.png', '*.jpeg'])
+    parser.add_argument('--save_mesh', action='store_true',
+                        help='Also save the MANO mesh as a *_mesh.npz file (off by default).')
     args = parser.parse_args()
 
     model, model_cfg = load_wilor(checkpoint_path=default_model, cfg_path=default_cfg)
@@ -191,10 +194,11 @@ def main():
                 save_joints_json(joints, joints_2d, json_path)
                 print(f'  Saved joints: {json_path}')
 
-                # Save mesh data
-                npz_path = os.path.join(args.out_folder, f'{img_fn}_hand{hand_idx}_{side}_mesh.npz')
-                save_mesh_npz(verts, cam_t, hand_is_right, scaled_focal_length, img_size[n].cpu().numpy(), faces, npz_path)
-                print(f'  Saved mesh:   {npz_path}')
+                # Save mesh data (optional — only the joints JSON is needed downstream)
+                if args.save_mesh:
+                    npz_path = os.path.join(args.out_folder, f'{img_fn}_hand{hand_idx}_{side}_mesh.npz')
+                    save_mesh_npz(verts, cam_t, hand_is_right, scaled_focal_length, img_size[n].cpu().numpy(), faces, npz_path)
+                    print(f'  Saved mesh:   {npz_path}')
 
                 hand_idx += 1
 
